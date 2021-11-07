@@ -8,7 +8,6 @@ namespace Ant.Grid
     {
         [SerializeField] ComputeShader _computerShader;
         [SerializeField] RenderTexture _renderTexture1;
-        [SerializeField] RenderTexture _renderTexture1;
         [SerializeField] RenderTexture _renderTexture2;
         [SerializeField] private Vector2Int _textureDimensions = new Vector2Int(256, 256);
         [SerializeField] private Vector3Int _threadGroups = new Vector3Int(4,4,1);
