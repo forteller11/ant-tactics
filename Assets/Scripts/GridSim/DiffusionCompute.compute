@@ -1,0 +1,29 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel diffuse
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Texture1;
+RWTexture2D<float4> Texture2;
+uniform float4 MousePosition;
+
+ 
+[numthreads(32,32,1)]
+void diffuse (uint3 id : SV_DispatchThreadID)
+{
+    //float4 diffuse = Texture1[id];
+    // TODO: insert actual code here !
+    
+    float4 col = Texture2[id.xy];
+    
+    if (abs(MousePosition.x - id.x) < 1 &&
+        abs(MousePosition.y - id.y) < 1)
+    {
+        col = float4(1,1,1,1);
+    }
+
+    Texture1[id.xy] = col;
+    Texture2[id.xy] = col * .98;
+}
+
+
