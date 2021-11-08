@@ -8,16 +8,16 @@ namespace Ant.Grid
 {
     public class CellSimulation : MonoBehaviour
     {
-        [SerializeField] [HideInInspector] ComputeShader _computerShader;
-        [SerializeField] RenderTexture _renderTexture1;
-        [SerializeField] RenderTexture _renderTexture2;
+        [SerializeField] [ShouldNotBeNull] ComputeShader _computerShader;
+        [SerializeField] [HideAtEditTime] RenderTexture _renderTexture1;
+        [SerializeField] [HideAtEditTime] RenderTexture _renderTexture2;
         [SerializeField] private Vector2Int _textureDimensions = new Vector2Int(256, 256);
         [SerializeField] private Vector3Int _threadGroups = new Vector3Int(4,4,1);
         private int kernalId = -1;
         private int Texture1Id = -1;
         private int Texture2Id = -1;
         
-        // Start is called before the first frame update
+        // Start is called befosre the first frame update
         void Start()
         {
             _renderTexture1 = new RenderTexture(_textureDimensions.x, _textureDimensions.y, 1, RenderTextureFormat.ARGB32);

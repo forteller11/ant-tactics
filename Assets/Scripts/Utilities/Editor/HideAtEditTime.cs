@@ -17,8 +17,16 @@ namespace Utilities.Editor
         {
             if (!Application.isPlaying)
                 return;
-            
-            base.OnGUI(position, property, label);
+
+            EditorGUI.PropertyField(position, property, label);
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            if (!Application.isPlaying)
+                return 0f;
+
+            return base.GetPropertyHeight(property, label);
         }
     }
 }
